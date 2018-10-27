@@ -23,8 +23,8 @@ public class LogEntryTest {
         Assert.assertEquals("23:49:08.277",logEntry.getLogTime());
         Assert.assertEquals("038 – F.MASSA",logEntry.getPilot());
         Assert.assertEquals(new Integer(1),logEntry.getLap());
-        Assert.assertEquals(LocalTime.of(0,1,2,852 ),logEntry.getLapTime());
-        Assert.assertEquals(new Double("44,275"),logEntry.getAvgLapTime());
-        
+        Assert.assertEquals(new Long(62852),logEntry.getLapTime());
+        Assert.assertEquals(new Double("44.275"),logEntry.getAvgLapTime());
+
     }
 }
