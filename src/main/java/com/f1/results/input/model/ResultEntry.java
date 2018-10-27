@@ -15,7 +15,7 @@ public class ResultEntry {
     private final String pilotName;
     private final Integer lap;
     private final Long lapTime;
-    private final Double avgLapTime;
+    private final Double avgLapSpeed;
 
 
     public ResultEntry(String[] columns){
@@ -24,7 +24,7 @@ public class ResultEntry {
         this.pilotName = columns[1].split(" – ")[1];
         this.lap = Integer.valueOf(columns[2]);
         this.lapTime = lapTimeParser(columns[3]);
-        this.avgLapTime = new Double(parseAvgTime(columns[4]));
+        this.avgLapSpeed = new Double(parseAvgTime(columns[4]));
     }
 
     public String getLogTime() {
@@ -48,8 +48,8 @@ public class ResultEntry {
         return lapTime;
     }
 
-    public Double getAvgLapTime() {
-        return avgLapTime;
+    public Double getAvgLapSpeed() {
+        return avgLapSpeed;
     }
 
     private static Long lapTimeParser(String lapTimeString) {
@@ -81,7 +81,7 @@ public class ResultEntry {
                 ", pilotName='" + pilotName + '\'' +
                 ", lap=" + lap +
                 ", lapTime=" + lapTime +
-                ", avgLapTime=" + avgLapTime +
+                ", avgLapSpeed=" + avgLapSpeed +
                 '}';
     }
 }

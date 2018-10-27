@@ -23,7 +23,7 @@ public class ResultEntryTest {
         Assert.assertEquals("F.MASSA",resultEntry.getPilotName());
         Assert.assertEquals(new Integer(1),resultEntry.getLap());
         Assert.assertEquals(new Long(62852),resultEntry.getLapTime());
-        Assert.assertEquals(new Double("44.275"),resultEntry.getAvgLapTime());
+        Assert.assertEquals(new Double("44.275"),resultEntry.getAvgLapSpeed());
 
     }
 }
