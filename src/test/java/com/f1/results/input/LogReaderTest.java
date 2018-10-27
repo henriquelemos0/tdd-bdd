@@ -4,12 +4,13 @@ import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class LogReaderTest {
 
     @Test
     public void readLogInput(){
-        String[][] logEntries = new LogReader().read("./input.log");
+        List<String[]> logEntries = getLogEntries();
 
         String[] logEntry0 = new String[5];
         logEntry0[0] = "23:49:08.277";
@@ -18,6 +19,10 @@ public class LogReaderTest {
         logEntry0[3] = "1:02.852";
         logEntry0[4] = "44,275";
 
-        Assert.assertArrayEquals(logEntry0,logEntries[0]);
+        Assert.assertArrayEquals(logEntry0,logEntries.get(0));
+    }
+
+    private List<String[]> getLogEntries() {
+        return new LogReader().read(getClass().getClassLoader().getResource("results.log").getPath());
     }
 }
