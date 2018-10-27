@@ -10,6 +10,13 @@ import java.util.List;
 
 public class LogReader {
 
+    /**
+     * Read the given file
+     * Parses each line spliting by each column
+     *
+     * @param filePath the file full path
+     * @return a list of String[], each line is one log entry containing five strings (columns)
+     */
     public List<String[]> read(String filePath) {
         List<String> logLines = getEntries(filePath);
 
@@ -21,6 +28,12 @@ public class LogReader {
         return logEntries;
     }
 
+    /**
+     * Read the file and return a each line as string in a list
+     *
+     * @param filePath the file full path
+     * @return a list containing a string for each line
+     */
     private List<String> getEntries(String filePath) {
         List<String> lines = Collections.emptyList();
         try
@@ -36,6 +49,13 @@ public class LogReader {
         return lines;
     }
 
+    /**
+     * Split the line into columns
+     * Considering that it may have spaces or tabs, it will split based on a separation of two or more spaces
+     *
+     * @param logLine
+     * @return
+     */
     private String[] splitColumns(String logLine) {
         return logLine.split("\\s{2,}");
     }
