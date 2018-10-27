@@ -11,7 +11,8 @@ public class ResultEntry {
     private static final Pattern LAP_TIME_PATTERN = Pattern.compile("(\\d{1,2}):(\\d{2}).(\\d{3})");
 
     private final String logTime;
-    private final String pilot;
+    private final String pilotCode;
+    private final String pilotName;
     private final Integer lap;
     private final Long lapTime;
     private final Double avgLapTime;
@@ -19,7 +20,8 @@ public class ResultEntry {
 
     public ResultEntry(String[] columns){
         this.logTime = columns[0];
-        this.pilot = columns[1];
+        this.pilotCode = columns[1].split(" – ")[0];
+        this.pilotName = columns[1].split(" – ")[1];
         this.lap = Integer.valueOf(columns[2]);
         this.lapTime = lapTimeParser(columns[3]);
         this.avgLapTime = new Double(parseAvgTime(columns[4]));
@@ -29,8 +31,13 @@ public class ResultEntry {
         return logTime;
     }
 
-    public String getPilot() {
-        return pilot;
+
+    public String getPilotCode() {
+        return pilotCode;
+    }
+
+    public String getPilotName() {
+        return pilotName;
     }
 
     public Integer getLap() {
@@ -66,4 +73,15 @@ public class ResultEntry {
         }
     }
 
+    @Override
+    public String toString() {
+        return "ResultEntry{" +
+                "logTime='" + logTime + '\'' +
+                ", pilotCode='" + pilotCode + '\'' +
+                ", pilotName='" + pilotName + '\'' +
+                ", lap=" + lap +
+                ", lapTime=" + lapTime +
+                ", avgLapTime=" + avgLapTime +
+                '}';
+    }
 }
