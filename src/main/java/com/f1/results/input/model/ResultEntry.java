@@ -2,15 +2,11 @@ package com.f1.results.input.model;
 
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.time.LocalTime;
-import java.time.format.DateTimeFormatter;
 import java.util.Locale;
-import java.util.TimeZone;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LogEntry {
+public class ResultEntry {
 
     private static final Pattern LAP_TIME_PATTERN = Pattern.compile("(\\d{1,2}):(\\d{2}).(\\d{3})");
 
@@ -21,7 +17,7 @@ public class LogEntry {
     private final Double avgLapTime;
 
 
-    public LogEntry(String[] columns){
+    public ResultEntry(String[] columns){
         this.logTime = columns[0];
         this.pilot = columns[1];
         this.lap = Integer.valueOf(columns[2]);
@@ -49,7 +45,7 @@ public class LogEntry {
         return avgLapTime;
     }
 
-    public static Long lapTimeParser(String lapTimeString) {
+    private static Long lapTimeParser(String lapTimeString) {
         Matcher matcher = LAP_TIME_PATTERN.matcher(lapTimeString);
         if (matcher.matches()) {
             return Long.parseLong(matcher.group(1)) * 60000
@@ -60,7 +56,7 @@ public class LogEntry {
         }
     }
 
-    private Double parseAvgTime(String avgTime)  {
+    private static Double parseAvgTime(String avgTime)  {
         NumberFormat format = NumberFormat.getInstance(Locale.getAvailableLocales()[61]);
         try {
             Number number = format.parse(avgTime);
