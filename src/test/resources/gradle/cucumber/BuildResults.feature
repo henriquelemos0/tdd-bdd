@@ -61,7 +61,7 @@ Feature: Build results
       | 033        | BARRICHELLO| 2     | 64002   | 53.00       |
       | 002        | RAIKKONEN  | 2     | 63982   | 53.00       |
       | 023        | WEBBER     | 2     | 64805   | 53.00       |
-      | 015        | ALONSO     | 3     | 67001   | 53.00       |
+      | 015        | ALONSO     | 3     | 67011   | 53.00       |
       | 038        | MASSA      | 3     | 62769   | 53.00       |
       | 033        | BARRICHELLO| 3     | 63716   | 53.00       |
       | 002        | RAIKKONEN  | 3     | 63987   | 53.00       |
