@@ -18,7 +18,6 @@ public class ResultBuilder {
     List<ResultBoardEntry> resultBoardEntries = new ArrayList<ResultBoardEntry>();
     Map<Pilot, LatestResult> latestResults = new HashMap<Pilot, LatestResult>();
 
-
     public ResultBoard buildResultBoard(){
 
         final Integer[] finalPosition = {1};

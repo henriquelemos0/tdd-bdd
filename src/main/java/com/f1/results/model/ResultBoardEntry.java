@@ -38,4 +38,15 @@ public class ResultBoardEntry {
     public String getTotalElapsedTime() {
         return totalElapsedTime;
     }
+
+    @Override
+    public String toString() {
+        return "ResultBoardEntry{" +
+                "finalPosition=" + finalPosition +
+                ", pilotCode='" + pilotCode + '\'' +
+                ", pilotName='" + pilotName + '\'' +
+                ", completedLaps=" + completedLaps +
+                ", totalElapsedTime='" + totalElapsedTime + '\'' +
+                '}';
+    }
 }

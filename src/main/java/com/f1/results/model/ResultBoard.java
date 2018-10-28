@@ -14,4 +14,10 @@ public class ResultBoard {
     public List<ResultBoardEntry> getResultBoardEntries() {
         return resultBoardEntries;
     }
+
+    public void printResult() {
+        for (ResultBoardEntry resultBoardEntry : resultBoardEntries) {
+            System.out.println(resultBoardEntry);
+        }
+    }
 }

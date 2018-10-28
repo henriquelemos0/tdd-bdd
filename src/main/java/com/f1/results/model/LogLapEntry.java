@@ -5,7 +5,6 @@ import com.f1.results.util.TimeConverter;
 
 public class LogLapEntry {
 
-
     private final String logTime;
     private final LapEntry lapEntry;
 
