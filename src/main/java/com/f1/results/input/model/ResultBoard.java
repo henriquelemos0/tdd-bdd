@@ -7,6 +7,10 @@ public class ResultBoard {
 
     private List<ResultBoardEntry> resultBoardEntries = Collections.EMPTY_LIST;
 
+    public ResultBoard(List<ResultBoardEntry> resultBoardEntries) {
+        this.resultBoardEntries = resultBoardEntries;
+    }
+
     public List<ResultBoardEntry> getResultBoardEntries() {
         return resultBoardEntries;
     }
