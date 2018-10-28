@@ -26,8 +26,8 @@ public class LatestResult implements Comparable<LatestResult> {
 
     @Override
     public int compareTo(LatestResult o) {
-        if (totalElapsedTime.compareTo(o.getTotalElapsedTime()) != 0){
-            return o.getTotalElapsedTime().compareTo(totalElapsedTime);
+        if (lastLap.compareTo(o.getLastLap()) != 0){
+            return o.getLastLap().compareTo(lastLap);
         }else{
             return totalElapsedTime.compareTo(o.getTotalElapsedTime());
         }
