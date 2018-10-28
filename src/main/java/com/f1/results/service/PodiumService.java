@@ -2,7 +2,6 @@ package com.f1.results.service;
 
 import com.f1.results.model.LapEntry;
 import com.f1.results.model.LatestResult;
-import com.f1.results.model.LogLapEntry;
 import com.f1.results.model.ResultBoardEntry;
 import com.f1.results.util.TimeConverter;
 
@@ -50,9 +49,9 @@ public class PodiumService {
         }
     }
 
-    public PodiumService addAllEntriesFromLog(List<LogLapEntry> logLapEntries){
-        for (LogLapEntry logLapEntry : logLapEntries) {
-            add(logLapEntry.getLapEntry());
+    public PodiumService addAll(List<LapEntry> lapEntries){
+        for (LapEntry lapEntry : lapEntries) {
+            add(lapEntry);
         }
         return this;
     }

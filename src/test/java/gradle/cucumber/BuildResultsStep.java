@@ -19,7 +19,7 @@ public class BuildResultsStep {
     public void theFollowingLaps(final List<LapEntry> lapEntryList) throws Throwable {
         for (LapEntry lapEntry : lapEntryList) {
             podiumService.add(
-                    new LapEntry(lapEntry.getPilotCode(), lapEntry.getPilotName(), lapEntry.getLap(), lapEntry.getLapTime(), lapEntry.getAvgLapSpeed())
+                    new LapEntry("", lapEntry.getPilotCode(), lapEntry.getPilotName(), lapEntry.getLap(), lapEntry.getLapTime(), lapEntry.getAvgLapSpeed())
             );
         }
     }

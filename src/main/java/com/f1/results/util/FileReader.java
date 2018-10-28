@@ -1,6 +1,6 @@
 package com.f1.results.util;
 
-import com.f1.results.model.LogLapEntry;
+import com.f1.results.model.LapEntry;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -13,17 +13,17 @@ import java.util.List;
 public class FileReader {
 
     /**
-     * Extract a list of LogLapEntry from a log file.
+     * Extract a list of LapEntry from a log file.
      *
      * @param filePath
-     * @return the list of LogLapEntry
+     * @return the list of LapEntry
      */
-    public static List<LogLapEntry> extractLogEntriesFromLogFile(String filePath){
+    public static List<LapEntry> extractLogEntriesFromLogFile(String filePath){
         List<String[]> lapEntryList = read(filePath);
 
-        List<LogLapEntry> logLapEntries = new ArrayList<LogLapEntry>();
+        List<LapEntry> logLapEntries = new ArrayList<LapEntry>();
         for (String[] strings : lapEntryList) {
-            logLapEntries.add(new LogLapEntry(strings));
+            logLapEntries.add(new LapEntry(strings));
         }
 
         return logLapEntries;

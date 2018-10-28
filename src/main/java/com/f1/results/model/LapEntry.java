@@ -1,26 +1,40 @@
 package com.f1.results.model;
 
-import java.util.regex.Pattern;
+import com.f1.results.util.NumberConverter;
+import com.f1.results.util.TimeConverter;
 
 public class LapEntry {
 
-    private static final Pattern LAP_TIME_PATTERN = Pattern.compile("(\\d{1,2}):(\\d{2}).(\\d{3})");
-
+    private String logTime;
     private String pilotCode;
     private String pilotName;
     private Integer lap;
     private Long lapTime;
     private Double avgLapSpeed;
 
-    public LapEntry(){
+    public LapEntry() {
     }
 
-    public LapEntry(String pilotCode, String pilotName, Integer lap, Long lapTime, Double avgLapSpeed) {
+    public LapEntry(String[] columns){
+        this.logTime = columns[0];
+        this.pilotCode = columns[1].split(" – ")[0];
+        this.pilotName = columns[1].split(" – ")[1];
+        this.lap = Integer.valueOf(columns[2]);
+        this.lapTime = TimeConverter.fromMinutesToMilis(columns[3]);
+        this.avgLapSpeed = new Double(NumberConverter.stringToDoubleBRFormat(columns[4]));
+    }
+
+    public LapEntry(String logTime, String pilotCode, String pilotName, Integer lap, Long lapTime, Double avgLapSpeed) {
+        this.logTime = logTime;
         this.pilotCode = pilotCode;
         this.pilotName = pilotName;
         this.lap = lap;
         this.lapTime = lapTime;
         this.avgLapSpeed = avgLapSpeed;
+    }
+
+    public String getLogTime() {
+        return logTime;
     }
 
     public String getPilotCode() {
@@ -41,16 +55,5 @@ public class LapEntry {
 
     public Double getAvgLapSpeed() {
         return avgLapSpeed;
-    }
-
-    @Override
-    public String toString() {
-        return "LapEntry{" +
-                "pilotCode='" + pilotCode + '\'' +
-                ", pilotName='" + pilotName + '\'' +
-                ", lap=" + lap +
-                ", lapTime=" + lapTime +
-                ", avgLapSpeed=" + avgLapSpeed +
-                '}';
     }
 }

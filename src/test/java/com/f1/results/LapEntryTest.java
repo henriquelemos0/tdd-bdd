@@ -1,6 +1,6 @@
 package com.f1.results;
 
-import com.f1.results.model.LogLapEntry;
+import com.f1.results.model.LapEntry;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,14 +16,14 @@ public class LapEntryTest {
         logEntry0[3] = "1:02.852";
         logEntry0[4] = "44,275";
 
-        LogLapEntry resultEntry = new LogLapEntry(logEntry0);
+        LapEntry resultEntry = new LapEntry(logEntry0);
 
         Assert.assertEquals("23:49:08.277",resultEntry.getLogTime());
-        Assert.assertEquals("038",resultEntry.getLapEntry().getPilotCode());
-        Assert.assertEquals("F.MASSA",resultEntry.getLapEntry().getPilotName());
-        Assert.assertEquals(new Integer(1),resultEntry.getLapEntry().getLap());
-        Assert.assertEquals(new Long(62852),resultEntry.getLapEntry().getLapTime());
-        Assert.assertEquals(new Double("44.275"),resultEntry.getLapEntry().getAvgLapSpeed());
+        Assert.assertEquals("038",resultEntry.getPilotCode());
+        Assert.assertEquals("F.MASSA",resultEntry.getPilotName());
+        Assert.assertEquals(new Integer(1),resultEntry.getLap());
+        Assert.assertEquals(new Long(62852),resultEntry.getLapTime());
+        Assert.assertEquals(new Double("44.275"),resultEntry.getAvgLapSpeed());
 
     }
 }
