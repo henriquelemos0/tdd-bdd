@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class FIleReader {
+public class FileReader {
 
     /**
      * Read the given file
