@@ -12,13 +12,8 @@ public class LatestResultTest {
 
     @Test
     public void sortByTime(){
-        LatestResult first = new LatestResult();
-        first.setLastLap(4);
-        first.setTotalElapsedTime(2000L);
-
-        LatestResult last = new LatestResult();
-        last.setLastLap(4);
-        last.setTotalElapsedTime(3000L);
+        LatestResult first = new LatestResult("1","A",4,2000L);
+        LatestResult last = new LatestResult("2","b",4,3000L);
 
         List<LatestResult> list = new ArrayList<LatestResult>();
         list.add(last);
@@ -32,13 +27,9 @@ public class LatestResultTest {
 
     @Test
     public void sortByLapAndTime(){
-        LatestResult first = new LatestResult();
-        first.setLastLap(4);
-        first.setTotalElapsedTime(4000L);
+        LatestResult first = new LatestResult("1","A",4,4000L);;
 
-        LatestResult last = new LatestResult();
-        last.setLastLap(3);
-        last.setTotalElapsedTime(3000L);
+        LatestResult last = new LatestResult("1","A",3,3000L);
 
         List<LatestResult> list = new ArrayList<LatestResult>();
         list.add(last);

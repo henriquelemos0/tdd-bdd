@@ -17,19 +17,19 @@ import java.util.stream.Stream;
 public class ResultBuilder {
 
     List<ResultBoardEntry> resultBoardEntries = new ArrayList<ResultBoardEntry>();
-    Map<Pilot, LatestResult> latestResults = new HashMap<Pilot, LatestResult>();
+    Map<String, LatestResult> latestResults = new HashMap<String, LatestResult>();
 
     public ResultBoard buildResultBoard(){
 
         final Integer[] finalPosition = {1};
-        Stream<Map.Entry<Pilot, LatestResult>> sorted;
+        Stream<Map.Entry<String, LatestResult>> sorted;
         latestResults.entrySet().stream()
-                .sorted(Map.Entry.<Pilot, LatestResult>comparingByValue())
+                .sorted(Map.Entry.<String, LatestResult>comparingByValue())
                 .forEachOrdered(x ->
                         resultBoardEntries.add(new ResultBoardEntry(
                                 finalPosition[0]++,
-                                x.getKey().getPilotCode(),
-                                x.getKey().getPilotName(),
+                                x.getValue().getPilotCode(),
+                                x.getValue().getPilotName(),
                                 x.getValue().getLastLap(),
                                 TimeConverter.fromMiliToMinutes(x.getValue().getTotalElapsedTime())
                         ))
@@ -45,17 +45,15 @@ public class ResultBuilder {
     }
 
     public ResultBuilder add(LapEntry lapEntry) {
-        Pilot pilot = new Pilot(lapEntry.getPilotCode(), lapEntry.getPilotName());
-
-        LatestResult latestResult = latestResults.get(pilot);
+        LatestResult latestResult = latestResults.get(lapEntry.getPilotCode());
         if (latestResult == null){
-            latestResult = new LatestResult();
+            latestResult = new LatestResult(lapEntry.getPilotCode(), lapEntry.getPilotName(), lapEntry.getLap(), lapEntry.getLapTime());
+        }else {
+            latestResult.setLastLap(lapEntry.getLap());
+            latestResult.incrementElapsedTime(lapEntry.getLapTime());
         }
 
-        latestResult.setLastLap(lapEntry.getLap());
-        latestResult.incrementElapsedTime(lapEntry.getLapTime());
-
-        latestResults.put(pilot,latestResult);
+        latestResults.put(lapEntry.getPilotCode(),latestResult);
         return this;
     }
 }
