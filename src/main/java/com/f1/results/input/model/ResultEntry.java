@@ -10,27 +10,22 @@ public class ResultEntry {
 
     private static final Pattern LAP_TIME_PATTERN = Pattern.compile("(\\d{1,2}):(\\d{2}).(\\d{3})");
 
-    private final String logTime;
-    private final String pilotCode;
-    private final String pilotName;
-    private final Integer lap;
-    private final Long lapTime;
-    private final Double avgLapSpeed;
+    private String pilotCode;
+    private String pilotName;
+    private Integer lap;
+    private Long lapTime;
+    private Double avgLapSpeed;
 
-
-    public ResultEntry(String[] columns){
-        this.logTime = columns[0];
-        this.pilotCode = columns[1].split(" – ")[0];
-        this.pilotName = columns[1].split(" – ")[1];
-        this.lap = Integer.valueOf(columns[2]);
-        this.lapTime = lapTimeParser(columns[3]);
-        this.avgLapSpeed = new Double(parseAvgTime(columns[4]));
+    public ResultEntry(){
     }
 
-    public String getLogTime() {
-        return logTime;
+    public ResultEntry(String pilotCode, String pilotName, Integer lap, Long lapTime, Double avgLapSpeed) {
+        this.pilotCode = pilotCode;
+        this.pilotName = pilotName;
+        this.lap = lap;
+        this.lapTime = lapTime;
+        this.avgLapSpeed = avgLapSpeed;
     }
-
 
     public String getPilotCode() {
         return pilotCode;
@@ -52,32 +47,10 @@ public class ResultEntry {
         return avgLapSpeed;
     }
 
-    private static Long lapTimeParser(String lapTimeString) {
-        Matcher matcher = LAP_TIME_PATTERN.matcher(lapTimeString);
-        if (matcher.matches()) {
-            return Long.parseLong(matcher.group(1)) * 60000
-                    + Long.parseLong(matcher.group(2)) * 1000
-                    + Long.parseLong(matcher.group(3));
-        } else {
-            throw new IllegalArgumentException("Invalid lap time format " + lapTimeString);
-        }
-    }
-
-    private static Double parseAvgTime(String avgTime)  {
-        NumberFormat format = NumberFormat.getInstance(Locale.getAvailableLocales()[61]);
-        try {
-            Number number = format.parse(avgTime);
-            return number.doubleValue();
-        }catch (ParseException e){
-            throw new IllegalArgumentException("Invalid average time format " + avgTime);
-        }
-    }
-
     @Override
     public String toString() {
         return "ResultEntry{" +
-                "logTime='" + logTime + '\'' +
-                ", pilotCode='" + pilotCode + '\'' +
+                "pilotCode='" + pilotCode + '\'' +
                 ", pilotName='" + pilotName + '\'' +
                 ", lap=" + lap +
                 ", lapTime=" + lapTime +
