@@ -1,6 +1,6 @@
 package com.f1.results.input;
 
-import com.f1.results.input.model.LogResultEntry;
+import com.f1.results.input.model.LogLapEntry;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,7 +16,7 @@ public class ResultEntryTest {
         logEntry0[3] = "1:02.852";
         logEntry0[4] = "44,275";
 
-        LogResultEntry resultEntry = new LogResultEntry(logEntry0);
+        LogLapEntry resultEntry = new LogLapEntry(logEntry0);
 
         Assert.assertEquals("23:49:08.277",resultEntry.getLogTime());
         Assert.assertEquals("038",resultEntry.getResultEntry().getPilotCode());

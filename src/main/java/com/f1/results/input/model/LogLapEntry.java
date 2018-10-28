@@ -6,14 +6,14 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class LogResultEntry {
+public class LogLapEntry {
 
     private static final Pattern LAP_TIME_PATTERN = Pattern.compile("(\\d{1,2}):(\\d{2}).(\\d{3})");
 
     private final String logTime;
     private final ResultEntry resultEntry;
 
-    public LogResultEntry(String[] columns){
+    public LogLapEntry(String[] columns){
         this.logTime = columns[0];
         this.resultEntry = createResultEntry(columns);
     }
@@ -59,7 +59,7 @@ public class LogResultEntry {
 
     @Override
     public String toString() {
-        return "LogResultEntry{" +
+        return "LogLapEntry{" +
                 "logTime='" + logTime + '\'' +
                 ", resultEntry=" + resultEntry +
                 '}';
