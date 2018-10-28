@@ -1,6 +1,6 @@
-package com.f1.results.input;
+package com.f1.results;
 
-import com.f1.results.input.model.LogLapEntry;
+import com.f1.results.model.LogLapEntry;
 import org.junit.Assert;
 import org.junit.Test;
 

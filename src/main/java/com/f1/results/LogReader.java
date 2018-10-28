@@ -1,4 +1,4 @@
-package com.f1.results.input;
+package com.f1.results;
 
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;

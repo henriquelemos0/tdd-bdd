@@ -1,14 +1,12 @@
-package com.f1.results.input;
+package com.f1.results;
 
-import com.f1.results.input.model.LatestResult;
-import com.f1.results.input.model.LogLapEntry;
+import com.f1.results.model.LatestResult;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
-import java.util.stream.Collectors;
 
 public class LatestResultTest {
 

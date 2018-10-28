@@ -1,9 +1,5 @@
-package com.f1.results.input.model;
+package com.f1.results.model;
 
-import java.text.NumberFormat;
-import java.text.ParseException;
-import java.util.Locale;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class LapEntry {

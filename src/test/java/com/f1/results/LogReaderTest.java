@@ -1,9 +1,9 @@
-package com.f1.results.input;
+package com.f1.results;
 
+import com.f1.results.LogReader;
 import org.junit.Assert;
 import org.junit.Test;
 
-import java.util.Arrays;
 import java.util.List;
 
 public class LogReaderTest {

@@ -1,7 +1,7 @@
 package gradle.cucumber;
 
-import com.f1.results.input.model.ResultBoardEntry;
-import com.f1.results.input.model.LapEntry;
+import com.f1.results.model.ResultBoardEntry;
+import com.f1.results.model.LapEntry;
 import cucumber.api.TypeRegistry;
 import cucumber.api.TypeRegistryConfigurer;
 import io.cucumber.datatable.DataTableType;

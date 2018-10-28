@@ -1,14 +1,8 @@
-package com.f1.results.input.util;
+package com.f1.results.util;
 
-import java.text.DateFormat;
 import java.text.NumberFormat;
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.Locale;
-import java.util.TimeZone;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class NumberConverter {
 

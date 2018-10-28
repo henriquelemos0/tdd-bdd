@@ -1,4 +1,4 @@
-package com.f1.results.input.model;
+package com.f1.results.model;
 
 public class ResultBoardEntry {
 

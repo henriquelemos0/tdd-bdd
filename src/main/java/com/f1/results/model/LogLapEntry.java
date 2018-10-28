@@ -1,7 +1,7 @@
-package com.f1.results.input.model;
+package com.f1.results.model;
 
-import com.f1.results.input.util.NumberConverter;
-import com.f1.results.input.util.TimeConverter;
+import com.f1.results.util.NumberConverter;
+import com.f1.results.util.TimeConverter;
 
 public class LogLapEntry {
 

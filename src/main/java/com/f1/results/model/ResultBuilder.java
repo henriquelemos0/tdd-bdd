@@ -1,14 +1,11 @@
-package com.f1.results.input.model;
+package com.f1.results.model;
 
-import com.f1.results.input.util.TimeConverter;
+import com.f1.results.util.TimeConverter;
 
 import java.util.ArrayList;
-import java.util.Comparator;
 import java.util.HashMap;
-import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class ResultBuilder {
