@@ -3,8 +3,6 @@ package com.f1.results.service;
 import com.f1.results.model.LapEntry;
 import com.f1.results.model.LatestResult;
 import com.f1.results.model.LogLapEntry;
-import com.f1.results.model.Pilot;
-import com.f1.results.model.ResultBoard;
 import com.f1.results.model.ResultBoardEntry;
 import com.f1.results.util.TimeConverter;
 
@@ -12,19 +10,18 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Stream;
 
-public class ResultBuilder {
+public class PodiumService {
 
-    List<ResultBoardEntry> resultBoardEntries ;
-    Map<String, LatestResult> latestResults = new HashMap<String, LatestResult>();
+    private List<ResultBoardEntry> resultBoardEntries ;
+    private Map<String, LatestResult> latestResults = new HashMap<String, LatestResult>();
 
-    public void showResultBoard(){
+    public void showPodium(){
         calculateResultBoard();
         printResult();
     }
 
-    private void calculateResultBoard() {
+    public List<ResultBoardEntry> calculateResultBoard() {
         resultBoardEntries = new ArrayList<ResultBoardEntry>();
         final Integer[] finalPosition = {1};
 
@@ -39,6 +36,12 @@ public class ResultBuilder {
                                 TimeConverter.fromMiliToMinutes(x.getValue().getTotalElapsedTime())
                         ))
                     );
+
+        return resultBoardEntries;
+    }
+
+    public List<ResultBoardEntry> getResultBoardEntries() {
+        return resultBoardEntries;
     }
 
     private void printResult() {
@@ -47,14 +50,14 @@ public class ResultBuilder {
         }
     }
 
-    public ResultBuilder addAllFromLog(List<LogLapEntry> logLapEntries){
+    public PodiumService addAllEntriesFromLog(List<LogLapEntry> logLapEntries){
         for (LogLapEntry logLapEntry : logLapEntries) {
             add(logLapEntry.getLapEntry());
         }
         return this;
     }
 
-    public ResultBuilder add(LapEntry lapEntry) {
+    public PodiumService add(LapEntry lapEntry) {
         LatestResult latestResult = latestResults.get(lapEntry.getPilotCode());
         if (latestResult == null){
             latestResult = new LatestResult(lapEntry.getPilotCode(), lapEntry.getPilotName(), lapEntry.getLap(), lapEntry.getLapTime());
