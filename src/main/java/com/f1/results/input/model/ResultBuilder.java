@@ -1,14 +1,11 @@
 package com.f1.results.input.model;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
+import com.f1.results.input.util.TimeConverter;
+
 import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.TimeZone;
 
 public class ResultBuilder {
 
@@ -26,19 +23,12 @@ public class ResultBuilder {
                             pilotLatestResultEntry.getKey().getPilotCode(),
                             pilotLatestResultEntry.getKey().getPilotName(),
                             pilotLatestResultEntry.getValue().getLastLap(),
-                            convertToTime(pilotLatestResultEntry.getValue().getTotalElapsedTime())
+                            TimeConverter.fromMiliToMinutes(pilotLatestResultEntry.getValue().getTotalElapsedTime())
                     )
             );
 
         }
         return new ResultBoard(resultBoardEntries);
-    }
-
-    private String convertToTime(Long totalElapsedTime) {
-        Date date = new Date(totalElapsedTime);
-        DateFormat formatter = new SimpleDateFormat("m:ss.SSS");
-        formatter.setTimeZone(TimeZone.getTimeZone("UTC"));
-        return formatter.format(date);
     }
 
     public void add(LapEntry lapEntry) {
