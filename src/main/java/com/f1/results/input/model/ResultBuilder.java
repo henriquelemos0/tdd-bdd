@@ -3,9 +3,13 @@ package com.f1.results.input.model;
 import com.f1.results.input.util.TimeConverter;
 
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class ResultBuilder {
 
@@ -14,20 +18,20 @@ public class ResultBuilder {
 
 
     public ResultBoard buildResultBoard(){
-        Integer finalPosition = 1;
-        for (Map.Entry<Pilot, LatestResult> pilotLatestResultEntry : latestResults.entrySet()) {
 
-            resultBoardEntries.add(
-                    new ResultBoardEntry(
-                            finalPosition++,
-                            pilotLatestResultEntry.getKey().getPilotCode(),
-                            pilotLatestResultEntry.getKey().getPilotName(),
-                            pilotLatestResultEntry.getValue().getLastLap(),
-                            TimeConverter.fromMiliToMinutes(pilotLatestResultEntry.getValue().getTotalElapsedTime())
-                    )
-            );
-
-        }
+        final Integer[] finalPosition = {1};
+        Stream<Map.Entry<Pilot, LatestResult>> sorted;
+        latestResults.entrySet().stream()
+                .sorted(Map.Entry.<Pilot, LatestResult>comparingByValue())
+                .forEachOrdered(x ->
+                        resultBoardEntries.add(new ResultBoardEntry(
+                                finalPosition[0]++,
+                                x.getKey().getPilotCode(),
+                                x.getKey().getPilotName(),
+                                x.getValue().getLastLap(),
+                                TimeConverter.fromMiliToMinutes(x.getValue().getTotalElapsedTime())
+                        ))
+                    );
         return new ResultBoard(resultBoardEntries);
     }
 

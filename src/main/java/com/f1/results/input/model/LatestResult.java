@@ -1,6 +1,6 @@
 package com.f1.results.input.model;
 
-public class LatestResult {
+public class LatestResult implements Comparable<LatestResult> {
     private Integer lastLap;
     private Long totalElapsedTime = 0L;
 
@@ -22,5 +22,14 @@ public class LatestResult {
 
     public void incrementElapsedTime(Long lapTime) {
         this.totalElapsedTime += lapTime;
+    }
+
+    @Override
+    public int compareTo(LatestResult o) {
+        if (totalElapsedTime.compareTo(o.getTotalElapsedTime()) != 0){
+            return o.getTotalElapsedTime().compareTo(totalElapsedTime);
+        }else{
+            return totalElapsedTime.compareTo(o.getTotalElapsedTime());
+        }
     }
 }
