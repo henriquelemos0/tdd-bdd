@@ -4,7 +4,7 @@ import com.f1.results.input.model.LogLapEntry;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class ResultEntryTest {
+public class LapEntryTest {
 
     @Test
     public void resultEntryParserTest(){
@@ -19,11 +19,11 @@ public class ResultEntryTest {
         LogLapEntry resultEntry = new LogLapEntry(logEntry0);
 
         Assert.assertEquals("23:49:08.277",resultEntry.getLogTime());
-        Assert.assertEquals("038",resultEntry.getResultEntry().getPilotCode());
-        Assert.assertEquals("F.MASSA",resultEntry.getResultEntry().getPilotName());
-        Assert.assertEquals(new Integer(1),resultEntry.getResultEntry().getLap());
-        Assert.assertEquals(new Long(62852),resultEntry.getResultEntry().getLapTime());
-        Assert.assertEquals(new Double("44.275"),resultEntry.getResultEntry().getAvgLapSpeed());
+        Assert.assertEquals("038",resultEntry.getLapEntry().getPilotCode());
+        Assert.assertEquals("F.MASSA",resultEntry.getLapEntry().getPilotName());
+        Assert.assertEquals(new Integer(1),resultEntry.getLapEntry().getLap());
+        Assert.assertEquals(new Long(62852),resultEntry.getLapEntry().getLapTime());
+        Assert.assertEquals(new Double("44.275"),resultEntry.getLapEntry().getAvgLapSpeed());
 
     }
 }

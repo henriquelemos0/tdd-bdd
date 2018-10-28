@@ -6,7 +6,7 @@ import java.util.Locale;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-public class ResultEntry {
+public class LapEntry {
 
     private static final Pattern LAP_TIME_PATTERN = Pattern.compile("(\\d{1,2}):(\\d{2}).(\\d{3})");
 
@@ -16,10 +16,10 @@ public class ResultEntry {
     private Long lapTime;
     private Double avgLapSpeed;
 
-    public ResultEntry(){
+    public LapEntry(){
     }
 
-    public ResultEntry(String pilotCode, String pilotName, Integer lap, Long lapTime, Double avgLapSpeed) {
+    public LapEntry(String pilotCode, String pilotName, Integer lap, Long lapTime, Double avgLapSpeed) {
         this.pilotCode = pilotCode;
         this.pilotName = pilotName;
         this.lap = lap;
@@ -49,7 +49,7 @@ public class ResultEntry {
 
     @Override
     public String toString() {
-        return "ResultEntry{" +
+        return "LapEntry{" +
                 "pilotCode='" + pilotCode + '\'' +
                 ", pilotName='" + pilotName + '\'' +
                 ", lap=" + lap +

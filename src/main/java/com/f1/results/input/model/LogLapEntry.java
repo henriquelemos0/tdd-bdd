@@ -11,29 +11,29 @@ public class LogLapEntry {
     private static final Pattern LAP_TIME_PATTERN = Pattern.compile("(\\d{1,2}):(\\d{2}).(\\d{3})");
 
     private final String logTime;
-    private final ResultEntry resultEntry;
+    private final LapEntry lapEntry;
 
     public LogLapEntry(String[] columns){
         this.logTime = columns[0];
-        this.resultEntry = createResultEntry(columns);
+        this.lapEntry = createResultEntry(columns);
     }
 
-    public ResultEntry getResultEntry() {
-        return resultEntry;
+    public LapEntry getLapEntry() {
+        return lapEntry;
     }
 
     public String getLogTime() {
         return logTime;
     }
 
-    private ResultEntry createResultEntry(String[] columns) {
+    private LapEntry createResultEntry(String[] columns) {
         String pilotCode = columns[1].split(" – ")[0];
         String pilotName = columns[1].split(" – ")[1];
         Integer lap = Integer.valueOf(columns[2]);
         Long lapTime = lapTimeParser(columns[3]);
         Double avgLapSpeed = new Double(parseAvgTime(columns[4]));
 
-        return new ResultEntry(pilotCode, pilotName, lap, lapTime, avgLapSpeed);
+        return new LapEntry(pilotCode, pilotName, lap, lapTime, avgLapSpeed);
     }
 
     private static Long lapTimeParser(String lapTimeString) {
@@ -61,7 +61,7 @@ public class LogLapEntry {
     public String toString() {
         return "LogLapEntry{" +
                 "logTime='" + logTime + '\'' +
-                ", resultEntry=" + resultEntry +
+                ", lapEntry=" + lapEntry +
                 '}';
     }
 

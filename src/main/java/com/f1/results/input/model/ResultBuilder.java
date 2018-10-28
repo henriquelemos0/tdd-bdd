@@ -14,7 +14,7 @@ public class ResultBuilder {
         return new ResultBoard(resultBoardEntries);
     }
 
-    public void add(ResultEntry resultEntry) {
+    public void add(LapEntry lapEntry) {
 
     }
 }

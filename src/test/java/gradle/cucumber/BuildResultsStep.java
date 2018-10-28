@@ -1,9 +1,9 @@
 package gradle.cucumber;
 
+import com.f1.results.input.model.LapEntry;
 import com.f1.results.input.model.ResultBoard;
 import com.f1.results.input.model.ResultBoardEntry;
 import com.f1.results.input.model.ResultBuilder;
-import com.f1.results.input.model.ResultEntry;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -18,10 +18,10 @@ public class BuildResultsStep {
     private ResultBoard resultBoard;
 
     @Given("^the following laps:$")
-    public void theFollowingLaps(final List<ResultEntry> resultEntryList) throws Throwable {
-        for (ResultEntry resultEntry : resultEntryList) {
+    public void theFollowingLaps(final List<LapEntry> lapEntryList) throws Throwable {
+        for (LapEntry lapEntry : lapEntryList) {
             resultBuilder.add(
-                    new ResultEntry(resultEntry.getPilotCode(), resultEntry.getPilotName(), resultEntry.getLap(), resultEntry.getLapTime(), resultEntry.getAvgLapSpeed())
+                    new LapEntry(lapEntry.getPilotCode(), lapEntry.getPilotName(), lapEntry.getLap(), lapEntry.getLapTime(), lapEntry.getAvgLapSpeed())
             );
         }
     }
