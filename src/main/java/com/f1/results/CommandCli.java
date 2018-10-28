@@ -11,22 +11,12 @@ import java.util.List;
 public class CommandCli {
 
     public static void main(String[] args) {
+
         System.out.println("Welcome to F1 Results");
 
-        FileReader fileReader = new FileReader();
-        List<String[]> lapEntryList = fileReader.read(args[0]);
+        List<LogLapEntry> logLapEntries = FileReader.extractLogEntriesFromLogFile(args[0]);
 
-        List<LogLapEntry> logLapEntries = new ArrayList<LogLapEntry>();
-        for (String[] strings : lapEntryList) {
-            logLapEntries.add(new LogLapEntry(strings));
-        }
-
-        ResultBuilder resultBuilder = new ResultBuilder();
-        for (LogLapEntry logLapEntry : logLapEntries) {
-            resultBuilder.add(logLapEntry.getLapEntry());
-        }
-
-        ResultBoard resultBoard = resultBuilder.buildResultBoard();
+        ResultBoard resultBoard = new ResultBuilder().addAllFromLog(logLapEntries).buildResultBoard();
         resultBoard.printResult();
     }
 

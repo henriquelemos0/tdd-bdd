@@ -2,6 +2,7 @@ package com.f1.results.service;
 
 import com.f1.results.model.LapEntry;
 import com.f1.results.model.LatestResult;
+import com.f1.results.model.LogLapEntry;
 import com.f1.results.model.Pilot;
 import com.f1.results.model.ResultBoard;
 import com.f1.results.model.ResultBoardEntry;
@@ -36,7 +37,14 @@ public class ResultBuilder {
         return new ResultBoard(resultBoardEntries);
     }
 
-    public void add(LapEntry lapEntry) {
+    public ResultBuilder addAllFromLog(List<LogLapEntry> logLapEntries){
+        for (LogLapEntry logLapEntry : logLapEntries) {
+            add(logLapEntry.getLapEntry());
+        }
+        return this;
+    }
+
+    public ResultBuilder add(LapEntry lapEntry) {
         Pilot pilot = new Pilot(lapEntry.getPilotCode(), lapEntry.getPilotName());
 
         LatestResult latestResult = latestResults.get(pilot);
@@ -48,5 +56,6 @@ public class ResultBuilder {
         latestResult.incrementElapsedTime(lapEntry.getLapTime());
 
         latestResults.put(pilot,latestResult);
+        return this;
     }
 }

@@ -1,5 +1,7 @@
 package com.f1.results.util;
 
+import com.f1.results.model.LogLapEntry;
+
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -11,13 +13,29 @@ import java.util.List;
 public class FileReader {
 
     /**
+     * Extract a list of LogLapEntry from a log file.
+     *
+     * @param filePath
+     * @return the list of LogLapEntry
+     */
+    public static List<LogLapEntry> extractLogEntriesFromLogFile(String filePath){
+        List<String[]> lapEntryList = read(filePath);
+
+        List<LogLapEntry> logLapEntries = new ArrayList<LogLapEntry>();
+        for (String[] strings : lapEntryList) {
+            logLapEntries.add(new LogLapEntry(strings));
+        }
+
+        return logLapEntries;
+    }
+    /**
      * Read the given file
      * Parses each line spliting by each column
      *
      * @param filePath the file full path
      * @return a list of String[], each line is one log entry containing five strings (columns)
      */
-    public List<String[]> read(String filePath) {
+    public static List<String[]> read(String filePath) {
         List<String> logLines = getEntries(filePath);
 
         List<String[]> logEntries = new ArrayList<String[]>();
@@ -34,7 +52,7 @@ public class FileReader {
      * @param filePath the file full path
      * @return a list containing a string for each line
      */
-    private List<String> getEntries(String filePath) {
+    private static List<String> getEntries(String filePath) {
         List<String> lines = Collections.emptyList();
         try
         {
@@ -56,7 +74,7 @@ public class FileReader {
      * @param logLine
      * @return
      */
-    private String[] splitColumns(String logLine) {
+    private static String[] splitColumns(String logLine) {
         return logLine.split("\\s{2,}");
     }
 
