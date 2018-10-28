@@ -1,5 +1,7 @@
 package com.f1.results.model;
 
+import java.util.Objects;
+
 public class Pilot {
 
     private final String pilotCode;
@@ -16,5 +18,19 @@ public class Pilot {
 
     public String getPilotName() {
         return pilotName;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Pilot pilot = (Pilot) o;
+        return Objects.equals(pilotCode, pilot.pilotCode) &&
+                Objects.equals(pilotName, pilot.pilotName);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(pilotCode, pilotName);
     }
 }

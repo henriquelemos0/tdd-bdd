@@ -43,10 +43,11 @@ public class ResultBuilder {
         LatestResult latestResult = latestResults.get(pilot);
         if (latestResult == null){
             latestResult = new LatestResult();
-            latestResults.put(pilot,latestResult);
         }
 
         latestResult.setLastLap(lapEntry.getLap());
         latestResult.incrementElapsedTime(lapEntry.getLapTime());
+
+        latestResults.put(pilot,latestResult);
     }
 }
