@@ -16,13 +16,18 @@ import java.util.stream.Stream;
 
 public class ResultBuilder {
 
-    List<ResultBoardEntry> resultBoardEntries = new ArrayList<ResultBoardEntry>();
+    List<ResultBoardEntry> resultBoardEntries ;
     Map<String, LatestResult> latestResults = new HashMap<String, LatestResult>();
 
-    public ResultBoard buildResultBoard(){
+    public void showResultBoard(){
+        calculateResultBoard();
+        printResult();
+    }
 
+    private void calculateResultBoard() {
+        resultBoardEntries = new ArrayList<ResultBoardEntry>();
         final Integer[] finalPosition = {1};
-        Stream<Map.Entry<String, LatestResult>> sorted;
+
         latestResults.entrySet().stream()
                 .sorted(Map.Entry.<String, LatestResult>comparingByValue())
                 .forEachOrdered(x ->
@@ -34,7 +39,12 @@ public class ResultBuilder {
                                 TimeConverter.fromMiliToMinutes(x.getValue().getTotalElapsedTime())
                         ))
                     );
-        return new ResultBoard(resultBoardEntries);
+    }
+
+    private void printResult() {
+        for (ResultBoardEntry resultBoardEntry : resultBoardEntries) {
+            System.out.println(resultBoardEntry);
+        }
     }
 
     public ResultBuilder addAllFromLog(List<LogLapEntry> logLapEntries){
