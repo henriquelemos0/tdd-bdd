@@ -3,7 +3,7 @@ package gradle.cucumber;
 import com.f1.results.model.LapEntry;
 import com.f1.results.model.ResultBoard;
 import com.f1.results.model.ResultBoardEntry;
-import com.f1.results.model.ResultBuilder;
+import com.f1.results.service.ResultBuilder;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;

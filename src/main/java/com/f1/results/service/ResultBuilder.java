@@ -1,5 +1,10 @@
-package com.f1.results.model;
+package com.f1.results.service;
 
+import com.f1.results.model.LapEntry;
+import com.f1.results.model.LatestResult;
+import com.f1.results.model.Pilot;
+import com.f1.results.model.ResultBoard;
+import com.f1.results.model.ResultBoardEntry;
 import com.f1.results.util.TimeConverter;
 
 import java.util.ArrayList;

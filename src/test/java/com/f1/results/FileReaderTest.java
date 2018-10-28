@@ -1,12 +1,12 @@
 package com.f1.results;
 
-import com.f1.results.LogReader;
+import com.f1.results.util.FIleReader;
 import org.junit.Assert;
 import org.junit.Test;
 
 import java.util.List;
 
-public class LogReaderTest {
+public class FIleReaderTest {
 
     @Test
     public void readLogInput() {
@@ -47,7 +47,7 @@ public class LogReaderTest {
     }
 
     private List<String[]> getLogEntries() {
-        return new LogReader().read(getClass().getClassLoader().getResource("results.log").getPath());
+        return new FIleReader().read(getClass().getClassLoader().getResource("results.log").getPath());
     }
 
 }
