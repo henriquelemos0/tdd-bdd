@@ -1,0 +1,22 @@
+Para buildar:
+
+./gradlew build
+
+Para rodar os testes BDD
+
+./gradlew cucumber
+
+Para rodar a aplicação
+
+java -jar ./build/libs/results-1.0-SNAPSHOT.jar ./src/test/resources/fullResults.log
+
+
+Considerações:
+Como dito nas instruções não foi usado nenhum framework.
+Considerei apenas o código do piloto como chave, já que havia um nome 'errado'.
+
+Foi desenvolvido usando TDD, fazendo os testes unitários primeiro e depois o código (vide ordem dos commits).
+Depois também foi adicionado o cucumber para BDD, também foi feito primeiro os testes cucumber para depois fazer a implementação.
+
+Há um Dockerfile para faciliar um possivel deploy da app.
+Foi configurado o travis-ci com o build/cucumber/docker.
