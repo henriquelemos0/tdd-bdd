@@ -1,1 +1,1 @@
-https://travis-ci.com/henriquelemos0/tdd-bdd.svg?branch=master
+[![Build Status](https://travis-ci.com/henriquelemos0/tdd-bdd.svg?branch=master)](https://travis-ci.com/henriquelemos0/tdd-bdd) 
