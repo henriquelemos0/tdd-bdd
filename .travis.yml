@@ -1,8 +1,15 @@
 language: java
 install: true
 
+services:
+- docker
+
 jdk:
 - oraclejdk8
 
 script:
 - ./gradlew build cucumber
+
+after_success:
+- docker build -t results .
+- docker run results
